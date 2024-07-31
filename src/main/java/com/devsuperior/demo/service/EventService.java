@@ -8,6 +8,7 @@ import com.devsuperior.demo.service.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class EventService {
@@ -18,7 +19,7 @@ public class EventService {
     @Autowired
     private CityRepository cityRepository;
 
-
+    @Transactional()
     public EventDTO update(Long id, EventDTO eventDto) {
         try {
             Event event = eventRepository.getReferenceById(id);
